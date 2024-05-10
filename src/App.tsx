@@ -1,12 +1,12 @@
-import { LoginForm } from "./components/LoginForm/LoginForm" 
-
-function App() {
-  
+import { BrowserRouter as Router } from "react-router-dom"
+import { Layout } from "./components/Layout/Layout"
+// import { ScrollArea } from "@/components/ui/scroll-area"
+function App() {  
   return (
     <>
-      <div className="flex items-center justify-center h-screen">
-        <LoginForm/>
-      </div>
+      <Router>
+        <Layout/>
+      </Router>
     </>
   )
 }
