@@ -1,3 +1,7 @@
+import {useState} from "react";
+import { Link } from "react-router-dom";
+import { loginUser } from "@/manager/auth.manager";
+
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -10,10 +14,23 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
 export function LoginForm() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async () => {
+    try {
+      const response = await loginUser(username, password);
+      localStorage.setItem('token', response.accessToken);
+    } catch (error) {
+      console.error('Failed to login', error);
+    }
+  };
+
+
   return (
     <Card className="mx-auto max-w-sm bg*">
       <CardHeader>
-        <CardTitle className="text-2xl">Login</CardTitle>
+        <CardTitle className="text-2xl">Connexion</CardTitle>
         <CardDescription>
           Entrez votre mail pour accéder à votre compte
         </CardDescription>
@@ -21,12 +38,14 @@ export function LoginForm() {
       <CardContent>
         <div className="grid gap-4">
           <div className="grid gap-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="username">Nom d'utilisateur</Label>
             <Input
-              id="email"
-              type="email"
-              placeholder="m_bennacer@estin.dz"
+              id="username"
+              type="username"
+              placeholder="ex: Akramex-dz"
               required
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
           </div>
           <div className="grid gap-2">
@@ -36,20 +55,27 @@ export function LoginForm() {
                 Forgot your password?
               </Link> */}
             </div>
-            <Input id="password" type="password" required />
+            <Input 
+              id="password" 
+              type="password"
+              placeholder="********"
+              required 
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
-          <Button type="submit" className="w-full">
-            Login
+          <Button type="submit" onClick={handleLogin} className="w-full">
+            Se connecter
           </Button>
           <Button variant="outline" className="w-full">
-            Login with Google
+            Se connecter avec Google
           </Button>
         </div>
         <div className="mt-4 text-center text-sm">
-          Don&apos;t have an account?{" "}
-          {/* <Link href="#" className="underline">
-            Sign up
-          </Link> */}
+          Vous n&apos;avez pas un compte?{" "}
+          <Link to="/inscription" className="underline">
+            S'inscrire
+          </Link>
         </div>
       </CardContent>
     </Card>

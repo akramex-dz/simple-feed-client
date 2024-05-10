@@ -1,4 +1,5 @@
-const API_URL : string = import.meta.env.VITE_APP_API_URL;
+const API_URL = import.meta.env.VITE_APP_API_GATEWAY + '/auth';
+
 
 async function registerUser(email: string, username: string, password: string) {
   const response = await fetch(`${API_URL}/register`, {
@@ -25,6 +26,10 @@ async function loginUser(username: string, password: string) {
     },
     body: JSON.stringify({ username, password }),
   });
+
+  console.log(response);
+  console.log(API_URL);
+  
 
   if (!response.ok) {
     throw new Error('Login failed');

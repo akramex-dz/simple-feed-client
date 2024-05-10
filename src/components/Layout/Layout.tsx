@@ -34,15 +34,15 @@ import {
 import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { SideBar } from "../SideBar/SideBar"
-import { ScrollArea } from "../ui/scroll-area" 
+import { ScrollArea, ScrollBar } from "../ui/scroll-area" 
 
 export function Layout() {
   return (
-    <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
+    <div className="grid h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       <div className="hidden border-r bg-muted/40 md:block">
         <SideBar/>
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col h-full">
         <header className="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
           {/* <Sheet>
             <SheetTrigger asChild>
@@ -150,9 +150,9 @@ export function Layout() {
             </DropdownMenuContent>
           </DropdownMenu> */}
         </header>
-        <main className="flex flex-1 flex-row ">
-          <div className="h-full w-full md:w-2/3">
-            <ScrollArea className="h-full">
+        <main className="w-fill flex flex-1 flex-row">
+          <div className="md:w-2/3">
+            <ScrollArea className="h-96">
                 <div className="bg-black h-28"></div>
                 <div className="bg-gray-700 h-28"></div>
                 <div className="bg-gray-500 h-28"></div>

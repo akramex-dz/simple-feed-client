@@ -1,13 +1,20 @@
-import { BrowserRouter as Router } from "react-router-dom"
-import { Layout } from "./components/Layout/Layout"
-// import { ScrollArea } from "@/components/ui/scroll-area"
+import { Routes, Route, BrowserRouter } from "react-router-dom"
+import LoginPage from "./pages/login.page"
+import SignupPage from "./pages/signup.page"
+import { Layout} from "./components/Layout/Layout"
+
 function App() {  
   return (
     <>
-      <Router>
-        <Layout/>
-      </Router>
+    < BrowserRouter>
+      <Routes>
+          <Route path="/connexion" element={<LoginPage />} />
+          <Route path="/inscription" element={<SignupPage />} />
+          <Route path="*" element={<h1>404</h1>} />
+      </Routes>
+      </BrowserRouter>
     </>
+
   )
 }
 
