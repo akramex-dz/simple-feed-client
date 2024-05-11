@@ -1,40 +1,40 @@
-import React from "react"
 import { Link } from "react-router-dom"
 
 import {
-  Bell,
-  CircleUser,
-  Home,
-  LineChart,
-  Menu,
-  Package,
-  Package2,
+  // Bell,
+  // CircleUser,
+  // Home,
+  // LineChart,
+  // Menu,
+  // Package,
+  // Package2,
   Search,
-  ShoppingCart,
-  Users,
+  // ShoppingCart,
+  // Users,
 } from "lucide-react"
 
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+// import { Badge } from "@/components/ui/badge"
+// import { Button } from "@/components/ui/button"
+// import {
+//   Card,
+//   CardContent,
+//   CardDescription,
+//   CardHeader,
+//   CardTitle,
+// } from "@/components/ui/card"
+// import {
+//   DropdownMenu,
+//   DropdownMenuContent,
+//   DropdownMenuItem,
+//   DropdownMenuLabel,
+//   DropdownMenuSeparator,
+//   DropdownMenuTrigger,
+// } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+// import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { SideBar } from "../SideBar/SideBar"
-import { ScrollArea, ScrollBar } from "../ui/scroll-area" 
+import { ScrollArea  } from "../ui/scroll-area" 
+import CreatePost from "../Posts/CreatePost"
 
 export function Layout() {
   return (
@@ -152,7 +152,11 @@ export function Layout() {
         </header>
         <main className="w-fill flex flex-1 flex-row">
           <div className="md:w-2/3">
-            <ScrollArea className="h-96">
+            <ScrollArea className="h-svh">
+                <CreatePost/>
+                <div className="bg-gray-700 h-28"></div>
+                <div className="bg-gray-500 h-28"></div>
+                <div className="bg-gray-400 h-28"></div>
                 <div className="bg-black h-28"></div>
                 <div className="bg-gray-700 h-28"></div>
                 <div className="bg-gray-500 h-28"></div>
@@ -160,23 +164,34 @@ export function Layout() {
                 <div className="bg-black h-28"></div>
                 <div className="bg-gray-700 h-28"></div>
                 <div className="bg-gray-500 h-28"></div>
-                <div className="bg-gray-400 h-28"></div>                <div className="bg-black h-28"></div>
+                <div className="bg-gray-400 h-28"></div>
+                <div className="bg-black h-28"></div>
                 <div className="bg-gray-700 h-28"></div>
                 <div className="bg-gray-500 h-28"></div>
-                <div className="bg-gray-400 h-28"></div>                <div className="bg-black h-28"></div>
+                <div className="bg-gray-400 h-28"></div>
+                <div className="bg-black h-28"></div>
                 <div className="bg-gray-700 h-28"></div>
                 <div className="bg-gray-500 h-28"></div>
-                <div className="bg-gray-400 h-28"></div>                <div className="bg-black h-28"></div>
-                <div className="bg-gray-700 h-28"></div>
-                <div className="bg-gray-500 h-28"></div>
-                <div className="bg-gray-400 h-28"></div>                <div className="bg-black h-28"></div>
+                <div className="bg-gray-400 h-28"></div>
+                <div className="bg-black h-28"></div>
                 <div className="bg-gray-700 h-28"></div>
                 <div className="bg-gray-500 h-28"></div>
                 <div className="bg-gray-400 h-28"></div>
             </ScrollArea>
           </div>
-          <div className="border-l collapse md:visible md:w-1/3">
-            SOMETHING TO PUT HERE ? Logo of the app may be or a shoutout to github
+          <div className="flex flex-col items-center justify-center border-l collapse md:visible md:w-1/3">
+              <p className="text-sm text-muted-foreground">
+                Developed with hate
+              </p>
+              <p className="text-sm text-muted-foreground">
+              🔪 BENNACER Akram Mohamed 🔪
+              </p>
+              <p className="text-sm text-muted-foreground">
+                visit my github{" "}
+              </p>
+              <a href="https://www.github.com/akramex-dz" className="text-sm font-bold">
+                github.com/akramex-dz
+              </a>
           </div>
         </main>
       </div>

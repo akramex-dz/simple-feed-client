@@ -1,5 +1,5 @@
 import {useState} from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { loginUser } from "@/manager/auth.manager";
 
 import { Button } from "@/components/ui/button"
@@ -21,6 +21,7 @@ export function LoginForm() {
     try {
       const response = await loginUser(username, password);
       localStorage.setItem('token', response.accessToken);
+      return <Navigate to="/" />
     } catch (error) {
       console.error('Failed to login', error);
     }
@@ -67,7 +68,7 @@ export function LoginForm() {
           <Button type="submit" onClick={handleLogin} className="w-full">
             Se connecter
           </Button>
-          <Button variant="outline" className="w-full">
+          <Button variant="outline" className="w-full" >
             Se connecter avec Google
           </Button>
         </div>

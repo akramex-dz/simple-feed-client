@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 import { useState } from "react"
 import { registerUser } from "@/manager/auth.manager"
+
 
 
 import { Button } from "@/components/ui/button"
@@ -25,7 +26,8 @@ export function SignupForm() {
       const response = await registerUser(email, username, password);
       console.log(email, username, password);
       localStorage.setItem('token', response.accessToken);
-      console.log(localStorage.getItem('token'))
+      console.log(localStorage.getItem('token'));
+      return <Navigate to="/" />
     } catch (error) {
       console.error('Failed to login', error);
     }

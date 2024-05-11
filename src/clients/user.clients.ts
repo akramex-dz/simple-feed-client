@@ -1,11 +1,12 @@
-const API_URL = import.meta.env.VITE_APP_API_URL; 
+const API_URL = import.meta.env.VITE_APP_API_GATEWAY + '/users';
+
 
 async function getUserProfile() {
   const response = await fetch(`${API_URL}/profile`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
     },
   });
 
@@ -22,7 +23,7 @@ async function searchUsers(query: string) {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
     },
   });
 
@@ -39,7 +40,7 @@ async function followUser(userId: string) {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
     },
   });
 
@@ -56,7 +57,7 @@ async function unfollowUser(userId: string) {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
     },
   });
 
@@ -73,7 +74,7 @@ async function listFollowers() {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
     },
   });
 
@@ -90,7 +91,7 @@ async function listFollowings() {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
     },
   });
 
