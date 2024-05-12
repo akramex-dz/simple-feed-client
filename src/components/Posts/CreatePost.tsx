@@ -4,19 +4,8 @@ import { createNewPost } from "@/manager/post.manager"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-
-// import {
-//     CornerDownLeft,
-//     Paperclip,
-//   } from "lucide-react"
-
-//   import {
-//     Tooltip,
-//     TooltipContent,
-//     TooltipTrigger,
-//   } from "@/components/ui/tooltip"
   
-function CreatePost() {
+function CreatePost({onNewPost}) {
   const [post, setPost] = useState('');
 
   const handlePost = async () => {
@@ -25,6 +14,7 @@ function CreatePost() {
         console.log('post', post);
         console.log('token', localStorage.getItem('token'));
         console.log(response);
+        onNewPost();
     } catch (error) {
       console.error('Failed to post', error);
     }

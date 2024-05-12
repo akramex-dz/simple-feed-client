@@ -1,5 +1,5 @@
 import {useState} from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "@/manager/auth.manager";
 
 import { Button } from "@/components/ui/button"
@@ -16,12 +16,12 @@ import { Label } from "@/components/ui/label"
 export function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
+  const navigate = useNavigate();
   const handleLogin = async () => {
     try {
       const response = await loginUser(username, password);
       localStorage.setItem('token', response.accessToken);
-      return <Navigate to="/" />
+      navigate('/');
     } catch (error) {
       console.error('Failed to login', error);
     }

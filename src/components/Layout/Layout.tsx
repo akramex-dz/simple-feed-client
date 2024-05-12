@@ -1,42 +1,42 @@
+import { useEffect, useState } from "react"
+import { fetchAllPosts } from "@/clients/post.client"
+
 import { Link } from "react-router-dom"
-
-import {
-  // Bell,
-  // CircleUser,
-  // Home,
-  // LineChart,
-  // Menu,
-  // Package,
-  // Package2,
-  Search,
-  // ShoppingCart,
-  // Users,
-} from "lucide-react"
-
-// import { Badge } from "@/components/ui/badge"
-// import { Button } from "@/components/ui/button"
-// import {
-//   Card,
-//   CardContent,
-//   CardDescription,
-//   CardHeader,
-//   CardTitle,
-// } from "@/components/ui/card"
-// import {
-//   DropdownMenu,
-//   DropdownMenuContent,
-//   DropdownMenuItem,
-//   DropdownMenuLabel,
-//   DropdownMenuSeparator,
-//   DropdownMenuTrigger,
-// } from "@/components/ui/dropdown-menu"
+import { Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
 // import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { SideBar } from "../SideBar/SideBar"
 import { ScrollArea  } from "../ui/scroll-area" 
 import CreatePost from "../Posts/CreatePost"
+import PostCard from "../Posts/PostCard"
 
 export function Layout() {
+
+  // interface Post {
+  //   _id: string;
+  //   userName: string;
+  //   content: string;
+  //   postTime: string;
+  // }
+  
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetchAllPosts().then((response) => {
+      setPosts(response);
+      console.log(response);
+    });
+    console.log(posts);
+  }, []);
+  
+  const handleNewPost = () => {
+    // Update the state with the new post
+    fetchAllPosts().then((response) => {
+      setPosts(response);
+      console.log(response);
+    });
+  };
+  
   return (
     <div className="grid h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       <div className="hidden border-r bg-muted/40 md:block">
@@ -153,35 +153,21 @@ export function Layout() {
         <main className="w-fill flex flex-1 flex-row">
           <div className="md:w-2/3">
             <ScrollArea className="h-svh">
-                <CreatePost/>
-                <div className="bg-gray-700 h-28"></div>
-                <div className="bg-gray-500 h-28"></div>
-                <div className="bg-gray-400 h-28"></div>
-                <div className="bg-black h-28"></div>
-                <div className="bg-gray-700 h-28"></div>
-                <div className="bg-gray-500 h-28"></div>
-                <div className="bg-gray-400 h-28"></div>
-                <div className="bg-black h-28"></div>
-                <div className="bg-gray-700 h-28"></div>
-                <div className="bg-gray-500 h-28"></div>
-                <div className="bg-gray-400 h-28"></div>
-                <div className="bg-black h-28"></div>
-                <div className="bg-gray-700 h-28"></div>
-                <div className="bg-gray-500 h-28"></div>
-                <div className="bg-gray-400 h-28"></div>
-                <div className="bg-black h-28"></div>
-                <div className="bg-gray-700 h-28"></div>
-                <div className="bg-gray-500 h-28"></div>
-                <div className="bg-gray-400 h-28"></div>
-                <div className="bg-black h-28"></div>
-                <div className="bg-gray-700 h-28"></div>
-                <div className="bg-gray-500 h-28"></div>
-                <div className="bg-gray-400 h-28"></div>
+                <CreatePost onNewPost={handleNewPost} />
+                <PostCard userName="akramex" content="This is jest a text for testing you know haha" postTime="Like 1 thousand year ago"/>
+                {posts.map(post => (
+                  <PostCard 
+                    key={post._id} 
+                    userName={post.username} 
+                    content={post.content} 
+                    postTime={post.createdAt.slice(0, 16)}
+                  />
+                ))}
             </ScrollArea>
           </div>
           <div className="flex flex-col items-center justify-center border-l collapse md:visible md:w-1/3">
               <p className="text-sm text-muted-foreground">
-                Developed with hate
+                Made with hate
               </p>
               <p className="text-sm text-muted-foreground">
               🔪 BENNACER Akram Mohamed 🔪

@@ -9,8 +9,18 @@ import {
 } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
+import { useNavigate } from "react-router-dom"
+
+
 
 export function SideBar() {
+  const navigate = useNavigate();
+
+  function logout() {
+    localStorage.removeItem('token');
+    navigate('/connexion');
+  }
+
   return (
     <div className="flex h-full max-h-screen flex-col gap-2">
         <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
@@ -53,7 +63,7 @@ export function SideBar() {
             </nav>
         </div>
         <div className="mt-auto p-4">
-            <Button size="sm" className="w-full">
+            <Button size="sm" className="w-full" onClick={logout}>
               Se déconnecter 
             </Button>
         </div>

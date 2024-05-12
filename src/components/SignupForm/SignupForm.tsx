@@ -1,9 +1,6 @@
-import { Link, Navigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { registerUser } from "@/manager/auth.manager"
-
-
-
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -20,6 +17,7 @@ export function SignupForm() {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSignup = async () => {
     try {
@@ -27,7 +25,7 @@ export function SignupForm() {
       console.log(email, username, password);
       localStorage.setItem('token', response.accessToken);
       console.log(localStorage.getItem('token'));
-      return <Navigate to="/" />
+      navigate('/')
     } catch (error) {
       console.error('Failed to login', error);
     }
