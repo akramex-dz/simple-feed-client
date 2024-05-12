@@ -1,11 +1,11 @@
-const API_URL = `${import.meta.env.VITE_APP_API_URL}/comments`;
+const API_URL = import.meta.env.VITE_APP_API_GATEWAY + '/comments';
 
 async function getCommentsByUserId(userId: string) {
   const response = await fetch(`${API_URL}/user/${userId}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
     },
   });
 
@@ -22,7 +22,7 @@ async function getCommentsByPostId(postId: string) {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
     },
   });
 
@@ -39,7 +39,7 @@ async function getCommentById(commentId: string) {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
     },
   });
 
@@ -56,7 +56,7 @@ async function createComment(postId: string, content: string) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
     },
     body: JSON.stringify({ postId, content }),
   });
@@ -74,7 +74,7 @@ async function updateCommentById(commentId: string, content: string) {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
     },
     body: JSON.stringify({ content }),
   });
@@ -92,7 +92,7 @@ async function deleteCommentById(commentId: string) {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
     },
   });
 
@@ -109,7 +109,7 @@ async function likeComment(commentId: string) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
     },
   });
 
@@ -126,7 +126,7 @@ async function unlikeComment(commentId: string) {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
     },
   });
 

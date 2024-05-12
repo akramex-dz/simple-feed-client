@@ -1,13 +1,31 @@
-import { LoginForm } from "./components/LoginForm/LoginForm" 
+import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom"
+import LoginPage from "./pages/login.page"
+import SignupPage from "./pages/signup.page"
+import HomePage from "./pages/home.page"
 
-function App() {
-  
+
+function PrivateRoute({ children, ...rest }) {
+  const token = localStorage.getItem('token');
+  return token ? children : <Navigate to="/connexion" />;
+}
+
+function App() {  
   return (
     <>
-      <div className="flex items-center justify-center h-screen">
-        <LoginForm/>
-      </div>
+    < BrowserRouter>
+      <Routes>
+          <Route path="/" element={ 
+            <PrivateRoute>
+              <HomePage/>
+            </PrivateRoute>
+            } />
+          <Route path="/connexion" element={ <LoginPage/> } />
+          <Route path="/inscription" element={ <SignupPage/> } />
+          <Route path="*" element={<h1>404</h1>} />
+      </Routes>
+      </BrowserRouter>
     </>
+
   )
 }
 
