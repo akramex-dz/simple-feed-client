@@ -154,7 +154,6 @@ export function Layout() {
           <div className="md:w-2/3">
             <ScrollArea className="h-svh">
                 <CreatePost onNewPost={handleNewPost} />
-                <PostCard userName="akramex" content="This is jest a text for testing you know haha" postTime="Like 1 thousand year ago"/>
                 {posts.map(post => (
                   <PostCard 
                     key={post._id} 
