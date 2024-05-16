@@ -2,6 +2,7 @@ import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom"
 import LoginPage from "./pages/login.page"
 import SignupPage from "./pages/signup.page"
 import HomePage from "./pages/home.page"
+import UserSearch from "./pages/userSearch.page"
 
 
 function PrivateRoute({ children, ...rest }) {
@@ -17,6 +18,11 @@ function App() {
           <Route path="/" element={ 
             <PrivateRoute>
               <HomePage/>
+            </PrivateRoute>
+            } />
+          <Route path="/recherche" element={ 
+            <PrivateRoute>
+              <UserSearch/>
             </PrivateRoute>
             } />
           <Route path="/connexion" element={ <LoginPage/> } />
