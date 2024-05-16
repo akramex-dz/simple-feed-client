@@ -44,7 +44,7 @@ export function SideBar() {
                 Acceuil
               </Link>
               <Link
-                to={"/"}
+                to={"/recherche"}
                 className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
               >
                 <Search className="h-4 w-4" />
